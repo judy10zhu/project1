@@ -1,0 +1,1 @@
+transition.o: ../transition.c
