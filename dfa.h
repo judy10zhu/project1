@@ -1,3 +1,10 @@
+//
+//  dfa.h
+//  Project1
+//
+//  Created by Judy on 9/11/21.
+//
+
 /*
  * File: dfa.h
  * Creator: George Ferguson
@@ -10,6 +17,10 @@
 
 #include <stdbool.h>
 
+//struct DFA{
+//    int numberOfStates;
+//    Table table[];
+//};
 /**
  * The data structure used to represent a deterministic finite automaton.
  * @see FOCS Section 10.2
