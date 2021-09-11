@@ -84,4 +84,6 @@ extern bool DFA_execute(DFA dfa, char *input);
  */
 extern void DFA_print(DFA dfa);
 
+extern State get_state(DFA d, int state);
+
 #endif

@@ -4,39 +4,24 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../BitSet.c \
-../IntHashSet.c \
-../LinkedList.c \
 ../Node.c \
 ../dfa.c \
-../hash.c \
 ../main.c \
-../strdup.c \
-../table.c \
+../state.c \
 ../transition.c 
 
 OBJS += \
-./BitSet.o \
-./IntHashSet.o \
-./LinkedList.o \
 ./Node.o \
 ./dfa.o \
-./hash.o \
 ./main.o \
-./strdup.o \
-./table.o \
+./state.o \
 ./transition.o 
 
 C_DEPS += \
-./BitSet.d \
-./IntHashSet.d \
-./LinkedList.d \
 ./Node.d \
 ./dfa.d \
-./hash.d \
 ./main.d \
-./strdup.d \
-./table.d \
+./state.d \
 ./transition.d 
 
 
@@ -44,7 +29,7 @@ C_DEPS += \
 %.o: ../%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cygwin C Compiler'
-	gcc -std=c99 -O0 -g3 -Wall -Werror -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

@@ -1,5 +1,5 @@
-dfa.o: ../dfa.c ../dfa.h ../LinkedList.h ../transition.h ../table.h
-../dfa.h:
-../LinkedList.h:
+dfa.o: ../dfa.c ../transition.h ../Node.h ../Transition.h ../dfa.h
 ../transition.h:
-../table.h:
+../Node.h:
+../Transition.h:
+../dfa.h:
