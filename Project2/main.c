@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 	printf("1");
 	DFA_set_transition(d, 0, 'c', 1);
 	printf("2");
-//	DFA_set_transition(d, 1, 'o', 2);
+	DFA_set_transition(d, 1, 'o', 2);
 //	printf("3");
 //	DFA_set_transition(d, 2, 'm', 3);
 //	printf("4");

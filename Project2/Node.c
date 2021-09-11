@@ -35,6 +35,10 @@ Node set_prev(Node n, Node prev){
 	return n;
 }
 
+Node get_prev(Node n){
+	return n-> prev;
+}
+
 Node get_next(Node n){
 	return n-> next;
 }

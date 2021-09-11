@@ -22,9 +22,9 @@ State new_state(){
 
 State add_transition(State s, char c, int i){
 	Node n = new_node(new_transition(c, i));
-	n->prev = s->last;
+	set_prev(n,s -> last);
 	if (s->last != NULL) {
-		s->last->next = n;
+		set_next(s->last, n);
 	}
 	s->last = n;
 	if (s->first == NULL) {
@@ -36,7 +36,7 @@ State add_transition(State s, char c, int i){
 int search_char(State s, char c){
 	Node search = s -> first;
 	while(search != NULL){
-		Node n = search -> next;
+		Node n = get_next(search);
 		if (get_data(search) == c){
 			return get_resultState(search);
 		}
@@ -50,7 +50,7 @@ void print_state(State s){
 	Node n = s -> first;
 	while (n != NULL){
 		print_node(n);
-		n = n -> next;
+		n = get_next(n);
 	}
 }
 
