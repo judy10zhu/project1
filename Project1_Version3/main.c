@@ -20,9 +20,10 @@ int main() {
 	DFA_set_transition(d, 6, 'e', 7);
 	DFA_set_transition(d, 7, 'r', 8);
 	DFA_set_acceptingState(d, 8);
+	//DFA_print(d);
 
-	DFA_print(d);
-	DFA_free(d);
+	bool result = DFA_execute(d, "computer");
+	printf("%d", result);
 	//printf("%d", DFA_get_accepting(d, 4));
 	//print_state(get_nextState(DFA_get_initialState(d)));
 	//print_state(DFA_find_state(d, 1));

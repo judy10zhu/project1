@@ -16,6 +16,8 @@ extern State DFA_get_initialState(DFA dfa);
 extern int DFA_get_transition(DFA dfa, int src, char sym);//find the result state of this char sym, return -1 if not find
 extern bool DFA_get_accepting(DFA dfa, int state);///return true if this State is the accepting state
 
+extern bool DFA_execute(DFA dfa, char input[]);
+
 extern void DFA_print(DFA dfa);
 extern void DFA_free(DFA dfa);
 
@@ -24,6 +26,6 @@ extern void DFA_free(DFA dfa);
 
 
 
-extern bool DFA_execute(DFA dfa, char *input);
+
 
 

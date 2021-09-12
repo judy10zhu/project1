@@ -101,7 +101,16 @@ void DFA_free(DFA dfa){
 	}
 }
 
-
-////bool DFA_execute(DFA dfa, char *input){
-////
-////}
+bool DFA_execute(DFA dfa, char input[]){
+	int currentState = 0;
+	for(int i = 0; i < strlen(input); i ++){
+		char in = input[i];
+		int nextState = DFA_get_transition(dfa, currentState, in);
+		if (nextState == -1){
+			return false;
+		}
+		currentState = nextState;
+	}
+	bool result = DFA_get_accepting(dfa, currentState);
+	return result;
+}
