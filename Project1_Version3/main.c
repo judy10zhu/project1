@@ -22,7 +22,7 @@ int main() {
 	DFA_set_acceptingState(d, 8);
 
 	//ask user for input
-    char userInput[100];
+    char userInput[256];
     printf("Enter your input: ");
     scanf("%s", &userInput);
 	bool result = DFA_execute(d, userInput);
@@ -36,13 +36,29 @@ int main() {
 	DFA_set_acceptingState(d, 3);
 
 	//ask user for input
-	char userInput[100];
+	char userInput[256];
 	printf("Enter your input: ");
 	scanf("%s", &userInput);
 	bool result = DFA_execute(d, userInput);
 	printf("%d", result);
 
 	//DFA for Binary input with an even number of 0’s and an even number of 1’s
+	DFA d = new_dfa(4);
+	DFA_set_transition(d, 0, '0', 1);
+	DFA_set_transition(d, 1, '1', 2);
+	DFA_set_transition(d, 2, '0', 3);
+	DFA_set_transition(d, 3, '1', 0);
+	DFA_set_transition(d, 0, '1', 3);
+	DFA_set_transition(d, 1, '0', 0);
+	DFA_set_transition(d, 2, '1', 1);
+	DFA_set_transition(d, 3, '0', 2);
+	DFA_set_acceptingState(d, 0);
 
+	//ask user for input
+	char userInput[256];
+	printf("Enter your input: ");
+	scanf("%s", &userInput);
+	bool result = DFA_execute(d, userInput);
+	printf("%d", result);
 
 }
