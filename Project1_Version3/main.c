@@ -33,6 +33,7 @@ int main() {
 	DFA_set_transition(d, 0, '1', 1);
 	DFA_set_transition(d, 1, '2', 2);
 	DFA_set_transition(d, 2, '3', 3);
+	DFA_set_transition_all(d, 3, 3);
 	DFA_set_acceptingState(d, 3);
 
 	//ask user for input
