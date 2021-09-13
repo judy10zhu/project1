@@ -5,6 +5,8 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../DFA.c \
+../IntSet.c \
+../NFA.c \
 ../Node.c \
 ../State.c \
 ../Transition.c \
@@ -12,6 +14,8 @@ C_SRCS += \
 
 OBJS += \
 ./DFA.o \
+./IntSet.o \
+./NFA.o \
 ./Node.o \
 ./State.o \
 ./Transition.o \
@@ -19,6 +23,8 @@ OBJS += \
 
 C_DEPS += \
 ./DFA.d \
+./IntSet.d \
+./NFA.d \
 ./Node.d \
 ./State.d \
 ./Transition.d \

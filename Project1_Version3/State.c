@@ -4,6 +4,7 @@
 #include <string.h>
 #include "Node.h"
 #include "State.h"
+#include "IntSet.h"
 
 typedef struct State* State;
 
@@ -74,6 +75,30 @@ int search_char(State s, char c){
 		search = n;
 	}
 	return -1;
+}
+
+IntSet NFA_search_char(State s, char c){
+	IntSet is = NULL;
+	IntSet current = NULL;
+	Node search = s -> first;
+	Node n;
+
+	while(search != NULL){
+		n = get_next(search);
+		if (get_data(search) == c){
+			if (is == NULL){
+				is = new_intSet(get_result(search));
+				current = is;
+			}else{
+				IntSet next = new_intSet(get_result(search));
+				IntSet_set_next(current, next);
+				current = next;
+			}
+		}
+		search = n;
+	}
+	return is;
+
 }
 
 void print_state(State s){

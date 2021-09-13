@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include "Node.h"
+#include "IntSet.h"
 
 typedef struct State* State;
 
@@ -26,6 +27,8 @@ extern State add_transition(State s, char c, int i);//create a new Transition us
 //then use this Transition to create a Node and add the Node to this State
 extern int search_char(State s, char c);//search if the State contains a Node whose Transition's input is c
 //return -1 if not find the char c
+extern IntSet NFA_search_char(State s, char c);//search char function for NFA
+//return NULL if not find the char c , else return an IntSet of result States
 
 extern void free_state(State s);
 extern void print_state(State s);//print each node

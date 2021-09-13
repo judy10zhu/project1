@@ -6,24 +6,105 @@
 #include "Node.h"
 #include "State.h"
 #include "DFA.h"
-
+#include "NFA.h"
+#include "IntSet.h"
 
 int main() {
-	//DFA for "computer"
-	DFA d = new_dfa(9);
-	DFA_set_transition(d, 0, 'c', 1);
-	DFA_set_transition(d, 1, 'o', 2);
-	DFA_set_transition(d, 2, 'm', 3);
-	DFA_set_transition(d, 3, 'p', 4);
-	DFA_set_transition(d, 4, 'u', 5);
-	DFA_set_transition(d, 5, 't', 6);
-	DFA_set_transition(d, 6, 'e', 7);
-	DFA_set_transition(d, 7, 'r', 8);
-	DFA_set_acceptingState(d, 8);
-	//DFA_print(d);
+	NFA n = new_nfa(3);
+	NFA_set_transition(n, 1, 'c', 2);
+	NFA_set_transition(n, 1, 'c', 0);
+	NFA_set_transition(n, 1, 'c', 1);
 
-	bool result = DFA_execute(d, "computer");
-	printf("%d", result);
+	IntSet is = NFA_search_char(NFA_find_state(n, 1), 'c');
+	print_IntSet(is);
+	IntSet next = IntSet_get_next(is);
+	while(next != NULL){
+		print_IntSet(next);
+		next = IntSet_get_next(next);
+	}
+	//print_state();
+//	IntSet is = NFA_search_char(NFA_find_state(n, 1), 'a');
+//	print_IntSet(is);
+
+
+
+
+//	IntSet is = new_intSet(0);
+//	print_IntSet(is);
+//	IntSet_set_next(is, new_intSet(1));
+//	print_IntSet(IntSet_get_next(is));
+
+
+
+
+////	NFA_set_acceptingState(n, 2);
+//	print_state(NFA_find_state(n, 1));
+//	//printf("%d", NFA_get_size(n));
+
+
+
+
+
+
+
+//	//DFA for "computer"
+//	DFA d = new_dfa(9);
+//	DFA_set_transition(d, 0, 'c', 1);
+//	DFA_set_transition(d, 1, 'o', 2);
+//	DFA_set_transition(d, 2, 'm', 3);
+//	DFA_set_transition(d, 3, 'p', 4);
+//	DFA_set_transition(d, 4, 'u', 5);
+//	DFA_set_transition(d, 5, 't', 6);
+//	DFA_set_transition(d, 6, 'e', 7);
+//	DFA_set_transition(d, 7, 'r', 8);
+//	DFA_set_acceptingState(d, 8);
+//////	//DFA_print(d);
+////
+//	bool result = DFA_execute(d, "1512656");
+//	printf("%d", result);
+
+//	//DFA for starting with "123"
+//	DFA d = new_dfa(4);
+//	DFA_set_transition(d, 0, '1', 1);
+//	DFA_set_transition(d, 1, '2', 2);
+//	DFA_set_transition(d, 2, '3', 3);
+//	DFA_set_transition_all(d, 3, 3);
+//	DFA_set_acceptingState(d, 3);
+//
+//	bool result = DFA_execute(d, "266");
+//	printf("%d", result);
+
+	//starts with either two 2¡¯s or three 3¡¯s
+//	DFA d = new_dfa(5);
+//	DFA_set_transition(d, 0, '2', 1);
+//	DFA_set_transition(d, 1, '2', 2);
+//	DFA_set_transition_all(d, 2, 2);
+//	DFA_set_transition(d, 0, '3', 3);
+//	DFA_set_transition(d, 3, '3', 4);
+//	DFA_set_transition_all(d, 4, 4);
+//	DFA_set_acceptingState(d, 2);
+//	DFA_set_acceptingState(d, 4);
+//
+//	bool result = DFA_execute(d, "22432522");
+//	printf("%d", result);
+
+//	//an even number of 0¡¯s and an even number of 1¡¯s
+//	DFA d = new_dfa(5);
+//	DFA_set_transition(d, 0, '0', 1);
+//	DFA_set_transition(d, 0, '1', 2);
+//	DFA_set_transition(d, 1, '0', 0);
+//	DFA_set_transition(d, 1, '1', 3);
+//	DFA_set_transition(d, 2, '0', 4);
+//	DFA_set_transition(d, 2, '1', 0);
+//	DFA_set_transition(d, 3, '0', 2);
+//	DFA_set_transition(d, 3, '1', 1);
+//	DFA_set_transition(d, 4, '0', 2);
+//	DFA_set_transition(d, 4, '1', 1);
+//	DFA_set_acceptingState(d, 0);
+//
+//	bool result = DFA_execute(d, "0101");
+//	printf("%d", result);
+
 	//printf("%d", DFA_get_accepting(d, 4));
 	//print_state(get_nextState(DFA_get_initialState(d)));
 	//print_state(DFA_find_state(d, 1));
