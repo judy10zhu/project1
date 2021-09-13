@@ -1,1 +1,0 @@
-LinkedList.o: ../LinkedList.c
