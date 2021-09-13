@@ -9,44 +9,7 @@
 #include "NFA.h"
 #include "IntSet.h"
 
-int main() {
-	NFA n = new_nfa(3);
-	NFA_set_transition(n, 1, 'c', 2);
-	NFA_set_transition(n, 1, 'c', 0);
-	NFA_set_transition(n, 1, 'c', 1);
-
-	IntSet is = NFA_search_char(NFA_find_state(n, 1), 'c');
-	print_IntSet(is);
-	IntSet next = IntSet_get_next(is);
-	while(next != NULL){
-		print_IntSet(next);
-		next = IntSet_get_next(next);
-	}
-	//print_state();
-//	IntSet is = NFA_search_char(NFA_find_state(n, 1), 'a');
-//	print_IntSet(is);
-
-
-
-
-//	IntSet is = new_intSet(0);
-//	print_IntSet(is);
-//	IntSet_set_next(is, new_intSet(1));
-//	print_IntSet(IntSet_get_next(is));
-
-
-
-
-////	NFA_set_acceptingState(n, 2);
-//	print_state(NFA_find_state(n, 1));
-//	//printf("%d", NFA_get_size(n));
-
-
-
-
-
-
-
+//int main() {
 //	//DFA for "computer"
 //	DFA d = new_dfa(9);
 //	DFA_set_transition(d, 0, 'c', 1);
@@ -58,117 +21,294 @@ int main() {
 //	DFA_set_transition(d, 6, 'e', 7);
 //	DFA_set_transition(d, 7, 'r', 8);
 //	DFA_set_acceptingState(d, 8);
-//////	//DFA_print(d);
-////
-//	bool result = DFA_execute(d, "1512656");
-//	printf("%d", result);
-
-//	//DFA for starting with "123"
-//	DFA d = new_dfa(4);
-//	DFA_set_transition(d, 0, '1', 1);
-//	DFA_set_transition(d, 1, '2', 2);
-//	DFA_set_transition(d, 2, '3', 3);
-//	DFA_set_transition_all(d, 3, 3);
-//	DFA_set_acceptingState(d, 3);
 //
-//	bool result = DFA_execute(d, "266");
-//	printf("%d", result);
-
-	//starts with either two 2¡¯s or three 3¡¯s
-//	DFA d = new_dfa(5);
-//	DFA_set_transition(d, 0, '2', 1);
-//	DFA_set_transition(d, 1, '2', 2);
-//	DFA_set_transition_all(d, 2, 2);
-//	DFA_set_transition(d, 0, '3', 3);
-//	DFA_set_transition(d, 3, '3', 4);
-//	DFA_set_transition_all(d, 4, 4);
-//	DFA_set_acceptingState(d, 2);
-//	DFA_set_acceptingState(d, 4);
+//	printf("Testing DFA that recognizes exactly 'computer' ... \n");
+//	char userInput[256];
+//	while(1){
+//		printf("Enter an input ('quit' to quit):  ");
+//		fflush( stdout );//only for eclipse
+//		scanf("%s", userInput);
+//		if(strcmp(userInput, "quit")== 0){
+//			printf("\n");
+//			break;
+//		}else{
+//			printf("Result for input '%s' : %s \n", userInput, DFA_execute(d, userInput) ? "true \n" : "false \n");
+//		}
+//	}
 //
-//	bool result = DFA_execute(d, "22432522");
-//	printf("%d", result);
-
-//	//an even number of 0¡¯s and an even number of 1¡¯s
-//	DFA d = new_dfa(5);
-//	DFA_set_transition(d, 0, '0', 1);
-//	DFA_set_transition(d, 0, '1', 2);
-//	DFA_set_transition(d, 1, '0', 0);
-//	DFA_set_transition(d, 1, '1', 3);
-//	DFA_set_transition(d, 2, '0', 4);
-//	DFA_set_transition(d, 2, '1', 0);
-//	DFA_set_transition(d, 3, '0', 2);
-//	DFA_set_transition(d, 3, '1', 1);
-//	DFA_set_transition(d, 4, '0', 2);
-//	DFA_set_transition(d, 4, '1', 1);
-//	DFA_set_acceptingState(d, 0);
+//	//DFA for Any string that starts with 123
+//	DFA sec = new_dfa(4);
+//	DFA_set_transition(sec, 0, '1', 1);
+//	DFA_set_transition(sec, 1, '2', 2);
+//	DFA_set_transition(sec, 2, '3', 3);
+//	DFA_set_transition_all(sec, 3, 3);
+//	DFA_set_acceptingState(sec, 3);
 //
-//	bool result = DFA_execute(d, "0101");
-//	printf("%d", result);
-
-	//printf("%d", DFA_get_accepting(d, 4));
-	//print_state(get_nextState(DFA_get_initialState(d)));
-	//print_state(DFA_find_state(d, 1));
-
-
+//	printf("Testing DFA that recognizes string that starts with '123' ... \n");
+//	char userInput_sec[256];
 //
-	//printf("%d", DFA_get_size(d));
-//	State s1 = new_state(0);
-//	add_transition(s1, 'c', 1);
-//	print_state(s1);
+//	while(1){
+//		printf("Enter an input ('quit' to quit):  ");
+//		fflush( stdout );//only for eclipse
+//		scanf("%s", userInput_sec);
+//		if(strcmp(userInput_sec, "quit")== 0){
+//			printf("\n");
+//			break;
+//		}else{
+//			printf("Result for input '%s' : %s \n", userInput_sec, DFA_execute(sec, userInput_sec) ? "true \n" : "false \n");
+//		}
+//	}
 //
-//	State s2 = new_state(1);
-//	add_transition(s2, 'o', 2);
-//	set_nextState(s1, s2);
 //
-//	State s3 = new_state(2);
-//	add_transition(s3, 'm', 3);
-//	set_nextState(s2, s3);
 //
-//	State s4 = new_state(3);
-//	add_transition(s4, 'p', 4);
-//	set_nextState(s3, s4);
+//	//DNA for any string that starts with either two 2's or three 3's
+//	DFA third = new_dfa(6);
+//	DFA_set_transition(third, 0, '2', 1);
+//	DFA_set_transition(third, 1, '2', 2);
+//	DFA_set_transition(third, 0, '3', 3);
+//	DFA_set_transition(third, 3, '3', 4);
+//	DFA_set_transition(third, 4, '3', 5);
+//	DFA_set_transition_all(third, 5, 5);
+//	DFA_set_transition_all(third, 2, 2);
+//	DFA_set_acceptingState(third, 2);
+//	DFA_set_acceptingState(third, 5);
 //
-//	State s5 = new_state(4);
-//	add_transition(s5, 'u', 5);
-//	set_nextState(s4, s5);
+//	printf("Testing DFA that recognizes string that starts with either two 2's or three 3's ... \n");
+//	char userInput_third[256];
 //
-//	State s6 = new_state(5);
-//	add_transition(s6, 't', 6);
-//	set_nextState(s5, s6);
+//	while(1){
+//		printf("Enter an input ('quit' to quit):  ");
+//		fflush( stdout );//only for eclipse
+//		scanf("%s", userInput_third);
+//		if(strcmp(userInput_third, "quit")== 0){
+//			printf("\n");
+//			break;
+//		}else{
+//			printf("Result for input '%s' : %s \n", userInput_third, DFA_execute(third, userInput_third) ? "true \n" : "false \n");
+//		}
+//	}
 //
-//	State s7 = new_state(6);
-//	add_transition(s7, 'e', 7);
-//	set_nextState(s6, s7);
+//	//DFA for Binary input with an even number of 0¡¯s and an even number of 1¡¯s
+//	DFA forth = new_dfa(4);
+//	DFA_set_transition(forth, 0, '0', 1);
+//	DFA_set_transition(forth, 1, '1', 2);
+//	DFA_set_transition(forth, 2, '0', 3);
+//	DFA_set_transition(forth, 3, '1', 0);
+//	DFA_set_transition(forth, 0, '1', 3);
+//	DFA_set_transition(forth, 1, '0', 0);
+//	DFA_set_transition(forth, 2, '1', 1);
+//	DFA_set_transition(forth, 3, '0', 2);
+//	DFA_set_acceptingState(forth, 0);
 //
-//	State s8 = new_state(7);
-//	set_accept(s8, true);
-//	add_transition(s8, 'r', 8);
-//	set_nextState(s7, s8);
+//	printf("Testing DFA that recognizes Binary input with an even number of 0¡¯s and an even number of 1¡¯s... \n");
 //
-//	State s = get_nextState(s1);
-//	while(s != NULL){
-//		print_state(s);
-//		s = get_nextState(s);
+//	char userInput_forth[256];
+//
+//	while(1){
+//		printf("Enter an input ('quit' to quit):  ");
+//		fflush( stdout );//only for eclipse
+//		scanf("%s", userInput_forth);
+//		if(strcmp(userInput_forth, "quit")== 0){
+//			printf("\n");
+//			break;
+//		}else{
+//			printf("Result for input '%s' : %s \n", userInput_forth, DFA_execute(forth, userInput_forth) ? "true \n" : "false \n");
+//		}
 //	}
 
+//	//Interesting Pattern: DFA for string which ends with 'ed'
+//	DFA fifth = new_dfa(3);
+//	DFA_set_transition(fifth, 0, 'i', 1);
+//	DFA_set_transition(fifth, 1, 'n', 2);
+//	DFA_set_transition(fifth, 0, 'e', 1);
+//	DFA_set_transition(fifth, 1, 'd', 2);
+//	DFA_set_transition(fifth, 2, 'i', 1);
+//	DFA_set_transition(fifth, 2, 'e', 1);
+//	DFA_set_transition_all(sec, 0, 0);
+//	DFA_set_acceptingState(fifth, 2);
+//
+//	printf("Testing DFA that recognizes for string which ends with 'ed' or 'in'... \n");
+//	char userInput_fifth[256];
+//
+//	while(1){
+//		printf("Enter an input ('quit' to quit):  ");
+//		fflush( stdout );//only for eclipse
+//		scanf("%s", userInput_fifth);
+//		if(strcmp(userInput_fifth, "quit")== 0){
+//			printf("\n");
+//			break;
+//		}else{
+//			printf("Result for input '%s' : %s \n", userInput_fifth, DFA_execute(fifth, userInput_fifth) ? "true \n" : "false \n");
+//		}
+//	}
+//}
+int main() {
+	NFA n = new_nfa(4);
+	NFA_set_transition_all(n, 0, 0);
+	//NFA_set_transition_all(n, 3, 3);
+	NFA_set_transition(n, 0, 't', 1);
+	NFA_set_transition(n, 1, 'e', 2);
+	NFA_set_transition(n, 2, 'r', 3);
+	NFA_set_acceptingState(n, 3);
 
-//	printf("%d", search_char(s1, 'o'));
-//	free_state(s1);
-
-	//    DFA d = new_DFA(9);g
-	//
-	//    printf("%d \n",DFA_get_size(d));
-	//    DFA_set_transition(d, 0, 'c', 1);
-	//    DFA_set_transition(d, 1, 'o', 2);
-	//    DFA_set_transition(d, 2, 'm', 3);
-	//    DFA_set_transition(d, 3, 'p', 4);
-	//    DFA_set_transition(d, 4, 'u', 5);
-	//    DFA_set_transition(d, 5, 't', 6);
-	//    DFA_set_transition(d, 6, 'e', 7);
-	//    DFA_set_transition(d, 7, 'r', 8);
-	//
-	//    printf("done \n");
-	//
-	//    DFA_print(d);
-
+	printf("%d", NFA_execute(n, 0, "terminal"));
+//
+//	NFA_print(n);
+//
+////	IntSet is = NFA_get_transition(n, 1, 'c');
+////	print_IntSet(is);
+////	IntSet next = IntSet_get_next(is);
+////	while(next != NULL){
+////		print_IntSet(next);
+////		next = IntSet_get_next(next);
+////	}
+//	//print_state();
+////	IntSet is = NFA_search_char(NFA_find_state(n, 1), 'a');
+////	print_IntSet(is);
+//
+//
+//
+//
+////	IntSet is = new_intSet(0);
+////	print_IntSet(is);
+////	IntSet_set_next(is, new_intSet(1));
+////	print_IntSet(IntSet_get_next(is));
+//
+//
+//
+//
+//////	NFA_set_acceptingState(n, 2);
+////	print_state(NFA_find_state(n, 1));
+////	//printf("%d", NFA_get_size(n));
+//
+//
+//
+//
+//
+//
+//
+////	//DFA for "computer"
+////	DFA d = new_dfa(9);
+////	DFA_set_transition(d, 0, 'c', 1);
+////	DFA_set_transition(d, 1, 'o', 2);
+////	DFA_set_transition(d, 2, 'm', 3);
+////	DFA_set_transition(d, 3, 'p', 4);
+////	DFA_set_transition(d, 4, 'u', 5);
+////	DFA_set_transition(d, 5, 't', 6);
+////	DFA_set_transition(d, 6, 'e', 7);
+////	DFA_set_transition(d, 7, 'r', 8);
+////	DFA_set_acceptingState(d, 8);
+////////	//DFA_print(d);
+//////
+////	bool result = DFA_execute(d, "1512656");
+////	printf("%d", result);
+//
+////	//DFA for starting with "123"
+////	DFA d = new_dfa(4);
+////	DFA_set_transition(d, 0, '1', 1);
+////	DFA_set_transition(d, 1, '2', 2);
+////	DFA_set_transition(d, 2, '3', 3);
+////	DFA_set_transition_all(d, 3, 3);
+////	DFA_set_acceptingState(d, 3);
+////
+////	bool result = DFA_execute(d, "266");
+////	printf("%d", result);
+//
+//	//starts with either two 2¡¯s or three 3¡¯s//wrong
+////	DFA d = new_dfa(5);
+////	DFA_set_transition(d, 0, '2', 1);
+////	DFA_set_transition(d, 1, '2', 2);
+////	DFA_set_transition_all(d, 2, 2);
+////	DFA_set_transition(d, 0, '3', 3);
+////	DFA_set_transition(d, 3, '3', 4);
+////	DFA_set_transition_all(d, 4, 4);
+////	DFA_set_acceptingState(d, 2);
+////	DFA_set_acceptingState(d, 4);
+////
+////	bool result = DFA_execute(d, "22432522");
+////	printf("%d", result);
+//
+////	//an even number of 0¡¯s and an even number of 1¡¯s
+////	DFA d = new_dfa(5);
+////	DFA_set_transition(d, 0, '0', 1);
+////	DFA_set_transition(d, 0, '1', 2);
+////	DFA_set_transition(d, 1, '0', 0);
+////	DFA_set_transition(d, 1, '1', 3);
+////	DFA_set_transition(d, 2, '0', 4);
+////	DFA_set_transition(d, 2, '1', 0);
+////	DFA_set_transition(d, 3, '0', 2);
+////	DFA_set_transition(d, 3, '1', 1);
+////	DFA_set_transition(d, 4, '0', 2);
+////	DFA_set_transition(d, 4, '1', 1);
+////	DFA_set_acceptingState(d, 0);
+////
+////	bool result = DFA_execute(d, "0101");
+////	printf("%d", result);
+//
+//	//printf("%d", DFA_get_accepting(d, 4));
+//	//print_state(get_nextState(DFA_get_initialState(d)));
+//	//print_state(DFA_find_state(d, 1));
+//
+//
+////
+//	//printf("%d", DFA_get_size(d));
+////	State s1 = new_state(0);
+////	add_transition(s1, 'c', 1);
+////	print_state(s1);
+////
+////	State s2 = new_state(1);
+////	add_transition(s2, 'o', 2);
+////	set_nextState(s1, s2);
+////
+////	State s3 = new_state(2);
+////	add_transition(s3, 'm', 3);
+////	set_nextState(s2, s3);
+////
+////	State s4 = new_state(3);
+////	add_transition(s4, 'p', 4);
+////	set_nextState(s3, s4);
+////
+////	State s5 = new_state(4);
+////	add_transition(s5, 'u', 5);
+////	set_nextState(s4, s5);
+////
+////	State s6 = new_state(5);
+////	add_transition(s6, 't', 6);
+////	set_nextState(s5, s6);
+////
+////	State s7 = new_state(6);
+////	add_transition(s7, 'e', 7);
+////	set_nextState(s6, s7);
+////
+////	State s8 = new_state(7);
+////	set_accept(s8, true);
+////	add_transition(s8, 'r', 8);
+////	set_nextState(s7, s8);
+////
+////	State s = get_nextState(s1);
+////	while(s != NULL){
+////		print_state(s);
+////		s = get_nextState(s);
+////	}
+//
+//
+////	printf("%d", search_char(s1, 'o'));
+////	free_state(s1);
+//
+//	//    DFA d = new_DFA(9);g
+//	//
+//	//    printf("%d \n",DFA_get_size(d));
+//	//    DFA_set_transition(d, 0, 'c', 1);
+//	//    DFA_set_transition(d, 1, 'o', 2);
+//	//    DFA_set_transition(d, 2, 'm', 3);
+//	//    DFA_set_transition(d, 3, 'p', 4);
+//	//    DFA_set_transition(d, 4, 'u', 5);
+//	//    DFA_set_transition(d, 5, 't', 6);
+//	//    DFA_set_transition(d, 6, 'e', 7);
+//	//    DFA_set_transition(d, 7, 'r', 8);
+//	//
+//	//    printf("done \n");
+//	//
+//	//    DFA_print(d);
+//
 }
