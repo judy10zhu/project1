@@ -71,6 +71,16 @@ void NFA_set_transition_all(NFA nfa, int src, int dst){
 	}
 }
 
+void NFA_set_transition_all_remove (NFA nfa, int src, char remove, int dst){
+    for (unsigned char c = 0; c < 128; c++){
+        if(c == remove){
+            continue;
+        }else{
+        NFA_set_transition(nfa, src, (char)c, dst);
+        }
+    }
+}
+
 IntSet NFA_get_transition(NFA nfa, int src, char sym){
 	return NFA_search_char(NFA_find_state(nfa, src), sym);
 }

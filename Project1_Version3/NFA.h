@@ -16,6 +16,7 @@ extern State NFA_find_state(NFA nfa, int src);//find the State of index src
 extern NFA NFA_set_acceptingState(NFA nfa, int indexOfState);
 extern void NFA_set_transition(NFA nfa, int src, char sym, int dst);
 extern void NFA_set_transition_all(NFA nfa, int src, int dst);
+extern void NFA_set_transition_all_remove (NFA nfa, int src, char remove, int dst);
 
 extern IntSet NFA_get_transition(NFA nfa, int src, char sym);//Intset is a node whose data type is int and has next IntSet
 extern bool NFA_get_accepting(NFA nfa, int state);
