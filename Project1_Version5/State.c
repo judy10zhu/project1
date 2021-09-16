@@ -64,6 +64,37 @@ State add_transition(State s, char c, int i){
 	return s;
 }
 
+State remove_transition(State s, char c){
+	Node n = s -> first;
+	if (n == NULL || get_next(n) == NULL){
+		if (n == NULL){
+			return s;
+		}else{
+			if (get_data(n) == c){//n is the only Node in State s and it should be removed
+				s -> first = NULL;
+				s -> last = NULL;
+				return s;
+			}
+		}
+	}
+	if (get_data(n) == c){//the first Node of the State should be removed
+		s -> first = get_next(n);
+		return s;
+	}
+	while (get_next(n) != NULL){
+		if (get_data(get_next(n)) == c){
+			if(get_next(get_next(n)) != NULL){
+				n = set_next(n, get_next(get_next(n)));
+			}else{
+				n = set_next(n, NULL);
+			}
+			return s;
+		}
+		n = get_next(n);
+	}
+	return s;
+}
+
 int search_char(State s, char c){
 	Node search = s -> first;
 	Node n;

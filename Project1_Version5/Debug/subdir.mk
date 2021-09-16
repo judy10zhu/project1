@@ -6,6 +6,8 @@
 C_SRCS += \
 ../DFA.c \
 ../IntSet.c \
+../IntSetNode.c \
+../IntSetTransition.c \
 ../NFA.c \
 ../Node.c \
 ../State.c \
@@ -15,6 +17,8 @@ C_SRCS += \
 OBJS += \
 ./DFA.o \
 ./IntSet.o \
+./IntSetNode.o \
+./IntSetTransition.o \
 ./NFA.o \
 ./Node.o \
 ./State.o \
@@ -24,6 +28,8 @@ OBJS += \
 C_DEPS += \
 ./DFA.d \
 ./IntSet.d \
+./IntSetNode.d \
+./IntSetTransition.d \
 ./NFA.d \
 ./Node.d \
 ./State.d \

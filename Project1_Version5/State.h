@@ -25,6 +25,7 @@ extern Node get_first(State s);
 
 extern State add_transition(State s, char c, int i);//create a new Transition using c as the input and i as the resultState
 //then use this Transition to create a Node and add the Node to this State
+extern State remove_transition(State s, char c);//remove the char c from s's Transitions
 extern int search_char(State s, char c);//search if the State contains a Node whose Transition's input is c
 //return -1 if not find the char c
 extern IntSet NFA_search_char(State s, char c);//search char function for NFA
