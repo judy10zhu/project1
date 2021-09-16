@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../DFA.c \
+../Dictionary.c \
 ../IntSet.c \
 ../IntSetNode.c \
 ../IntSetTransition.c \
@@ -12,10 +13,13 @@ C_SRCS += \
 ../Node.c \
 ../State.c \
 ../Transition.c \
+../Translator.c \
+../TranslatorHelper.c \
 ../main.c 
 
 OBJS += \
 ./DFA.o \
+./Dictionary.o \
 ./IntSet.o \
 ./IntSetNode.o \
 ./IntSetTransition.o \
@@ -23,10 +27,13 @@ OBJS += \
 ./Node.o \
 ./State.o \
 ./Transition.o \
+./Translator.o \
+./TranslatorHelper.o \
 ./main.o 
 
 C_DEPS += \
 ./DFA.d \
+./Dictionary.d \
 ./IntSet.d \
 ./IntSetNode.d \
 ./IntSetTransition.d \
@@ -34,6 +41,8 @@ C_DEPS += \
 ./Node.d \
 ./State.d \
 ./Transition.d \
+./Translator.d \
+./TranslatorHelper.d \
 ./main.d 
 
 

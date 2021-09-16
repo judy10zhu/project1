@@ -4,7 +4,7 @@
 #include "State.h"
 #include "IntSet.h"
 
-typedef struct NFA *NFA;
+typedef struct NFA* NFA;
 
 
 extern NFA new_nfa(int nstates);

@@ -1,5 +1,5 @@
-State.o: ../State.c ../Node.h ../transition.h ../State.h ../IntSet.h
+State.o: ../State.c ../Node.h ../Transition.h ../State.h ../IntSet.h
 ../Node.h:
-../transition.h:
+../Transition.h:
 ../State.h:
 ../IntSet.h:

@@ -1,6 +1,6 @@
-DFA.o: ../DFA.c ../State.h ../Node.h ../transition.h ../IntSet.h ../DFA.h
+DFA.o: ../DFA.c ../State.h ../Node.h ../Transition.h ../IntSet.h ../DFA.h
 ../State.h:
 ../Node.h:
-../transition.h:
+../Transition.h:
 ../IntSet.h:
 ../DFA.h:

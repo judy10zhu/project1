@@ -6,7 +6,7 @@
 #include "NFA.h"
 #include "IntSet.h"
 
-typedef struct NFA *NFA;
+typedef struct NFA* NFA;
 
 struct NFA{
 	int totalNumOfStates;

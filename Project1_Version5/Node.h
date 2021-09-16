@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include "transition.h"
+#include "Transition.h"
 
 typedef struct Node* Node;
 

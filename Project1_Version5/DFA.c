@@ -6,7 +6,7 @@
 #include "DFA.h"
 
 
-typedef struct DFA *DFA;
+typedef struct DFA* DFA;
 
 struct DFA{
 	int totalNumOfStates;

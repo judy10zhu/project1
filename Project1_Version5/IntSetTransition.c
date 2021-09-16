@@ -18,7 +18,7 @@ IntSetTransition new_intSetTransition(char c, IntSet dst){
 }
 
 void print_intSetTransition(IntSetTransition ist){
-	printf("{%c: ", ist -> c);
+	printf("(%c: ", ist -> c);
 	print_intSet(ist -> dst);
-	printf("}\n");
+	printf(")\n");
 }

@@ -1,7 +1,7 @@
 #include <stdbool.h>
 
 
-typedef struct DFA *DFA;
+typedef struct DFA* DFA;
 
 extern DFA new_dfa(int nstates);
 //nstate is the total number of States

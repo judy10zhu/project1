@@ -10,29 +10,23 @@
 #include "IntSet.h"
 #include "IntSetNode.h"
 #include "IntSetTransition.h"
+#include "Dictionary.h"
+#include "Translator.h"
+#include "TranslatorHelper.h"
 
 int main(){
-//	State s = new_state(0);
-//	add_transition(s, 'b', 1);
-//	add_transition(s, 'c', 1);
-//	add_transition(s, 'd', 1);
-//	//print_state(s);
-//	s = remove_transition(s, 'd');
-//	print_state(s);
+	//build the nfa
+	NFA nfa = new_nfa(4);
+	NFA_set_transition_all(nfa, 0, 0);
+	NFA_set_transition(nfa, 0, 't', 1);
+	NFA_set_transition(nfa, 1, 'e', 2);
+	NFA_set_transition(nfa, 2, 'r', 3);
+	NFA_set_transition_all(nfa, 3, 3);
+	NFA_set_acceptingState(nfa, 3);
 
-
-//	IntSet is = new_intSet(2);
-//	IntSet is1 = new_intSet(0);
-//	is = IntSet_sorted_add(is, is1);
-//
-//	IntSet is2 = new_intSet(3);
-//	IntSet is3 = new_intSet(3);
-//	is = IntSet_sorted_add(is, is2);
-//	is = IntSet_sorted_add(is, is3);
-//	//print_intSet(is);
-//
-//	IntSetTransition ist = new_intSetTransition('c', is);
-//	print_intSetTransition(ist);
+	TranslatorHelper tsh = new_translatorHelper();
+	tsh = Translator(nfa, tsh);
+	print_translatorHelper(tsh);//print the translator table
 
 }
 

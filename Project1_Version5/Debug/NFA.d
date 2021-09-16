@@ -1,6 +1,6 @@
-NFA.o: ../NFA.c ../State.h ../Node.h ../transition.h ../IntSet.h ../NFA.h
+NFA.o: ../NFA.c ../State.h ../Node.h ../Transition.h ../IntSet.h ../NFA.h
 ../State.h:
 ../Node.h:
-../transition.h:
+../Transition.h:
 ../IntSet.h:
 ../NFA.h:
