@@ -13,20 +13,34 @@
 #include "Dictionary.h"
 #include "Translator.h"
 #include "TranslatorHelper.h"
+#include "IntSetToInt.h"
 
 int main(){
-	//build the nfa
-	NFA nfa = new_nfa(4);
+//	IntSet is = new_intSet(0);
+//	IntSet is1 = new_intSet(1);
+//	IntSet_sorted_addAll(is, is1);
+//
+//	IntSet is2 = new_intSet(0);
+//	IntSet is3 = new_intSet(1);
+//	IntSet_sorted_addAll(is2, is3);
+//
+//	IntSetToInt isti = new_intSetToInt(is, 0);
+//	IntSetToInt isti1 = new_intSetToInt(is1, 1);
+//	set_nextIntSetToInt(isti, isti1);
+//	printf("%d",search_stateIndex(isti, is3));
+
+//	//build the nfa
+	NFA nfa = new_nfa(3);
 	NFA_set_transition_all(nfa, 0, 0);
-	NFA_set_transition(nfa, 0, 't', 1);
-	NFA_set_transition(nfa, 1, 'e', 2);
-	NFA_set_transition(nfa, 2, 'r', 3);
-	NFA_set_transition_all(nfa, 3, 3);
-	NFA_set_acceptingState(nfa, 3);
+	NFA_set_transition(nfa, 0, 'e', 1);
+	NFA_set_transition(nfa, 1, 'd', 2);
+	NFA_set_acceptingState(nfa, 2);
 
 	TranslatorHelper tsh = new_translatorHelper();
 	tsh = Translator(nfa, tsh);
-	print_translatorHelper(tsh);//print the translator table
+	DFA d = build_dfa(tsh);
+	DFA_print(d);
+//	print_translatorHelper(tsh);//print the translator table
 
 }
 

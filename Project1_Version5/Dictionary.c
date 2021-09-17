@@ -30,6 +30,18 @@ void print_dictionary(Dictionary d){
 	}
 }
 
+IntSet Dictionary_get_currentState(Dictionary d){
+	return d -> currentState;
+}
+
+IntSetTransition Dictionary_get_ist(Dictionary d){
+	return d -> ist;
+}
+
+Dictionary Dictionary_get_next(Dictionary d){
+	return d -> next;
+}
+
 Dictionary add_dictionary(Dictionary d, Dictionary added){
 	if (d == NULL){
 		d = added;

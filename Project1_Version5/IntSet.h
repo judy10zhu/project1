@@ -11,6 +11,7 @@ extern int IntSet_get_data(IntSet is);
 extern bool IntSet_if_contains(IntSet is, IntSet added);
 //return true if is contains an int that is equal to i
 extern IntSet IntSet_sorted_add(IntSet is, IntSet next);
+//do not use this, use the IntSet_sorted_addAll below instead
 //could only add next to is, if next has IntSet next, next.next will not be added
 //if is does not contain the next
 //add next to is in sorted order, data sorted from small to large
@@ -22,7 +23,6 @@ extern IntSet IntSet_sorted_addAll(IntSet is, IntSet added);
 
 extern bool isSame_intSet(IntSet is1, IntSet is2);
 //return true if is1 and is2 have the same int set
-//maybe this function has never been used, will check it out later
 
 extern void free_intSet(IntSet is);
 extern void print_intSet(IntSet is);

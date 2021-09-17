@@ -10,6 +10,14 @@ struct IntSetTransition {
 	IntSet dst;
 };
 
+char IntSetTransition_get_c(IntSetTransition ist){
+	return ist -> c;
+}
+
+IntSet IntSetTransition_get_dst(IntSetTransition ist){
+	return ist -> dst;
+}
+
 IntSetTransition new_intSetTransition(char c, IntSet dst){
 	IntSetTransition this = (IntSetTransition)malloc(sizeof(struct IntSetTransition));
 	this -> c = c;

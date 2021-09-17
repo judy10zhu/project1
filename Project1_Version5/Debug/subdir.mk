@@ -8,6 +8,7 @@ C_SRCS += \
 ../Dictionary.c \
 ../IntSet.c \
 ../IntSetNode.c \
+../IntSetToInt.c \
 ../IntSetTransition.c \
 ../NFA.c \
 ../Node.c \
@@ -22,6 +23,7 @@ OBJS += \
 ./Dictionary.o \
 ./IntSet.o \
 ./IntSetNode.o \
+./IntSetToInt.o \
 ./IntSetTransition.o \
 ./NFA.o \
 ./Node.o \
@@ -36,6 +38,7 @@ C_DEPS += \
 ./Dictionary.d \
 ./IntSet.d \
 ./IntSetNode.d \
+./IntSetToInt.d \
 ./IntSetTransition.d \
 ./NFA.d \
 ./Node.d \

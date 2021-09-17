@@ -1,6 +1,7 @@
 Translator.o: ../Translator.c ../IntSet.h ../IntSetNode.h \
  ../IntSetTransition.h ../Dictionary.h ../NFA.h ../State.h ../Node.h \
- ../Transition.h ../Translator.h ../TranslatorHelper.h
+ ../Transition.h ../DFA.h ../Translator.h ../TranslatorHelper.h \
+ ../IntSetToInt.h
 ../IntSet.h:
 ../IntSetNode.h:
 ../IntSetTransition.h:
@@ -9,5 +10,7 @@ Translator.o: ../Translator.c ../IntSet.h ../IntSetNode.h \
 ../State.h:
 ../Node.h:
 ../Transition.h:
+../DFA.h:
 ../Translator.h:
 ../TranslatorHelper.h:
+../IntSetToInt.h:

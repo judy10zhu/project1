@@ -1,3 +1,6 @@
+#include "IntSetNode.h"
+#include "Dictionary.h"
+
 typedef struct TranslatorHelper* TranslatorHelper;
 
 extern TranslatorHelper new_translatorHelper();

@@ -52,3 +52,14 @@ bool if_contains(IntSetNode isn, IntSet is){
 	}
 	return false;
 }
+
+int IntSetNode_count(IntSetNode isn){
+	IntSetNode search = isn;
+	int count = 0;
+	while(search != NULL){
+		count += 1;
+		search = search -> next;
+	}
+	return count;
+}
+

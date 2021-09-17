@@ -3,8 +3,10 @@
 #include "IntSetTransition.h"
 #include "Dictionary.h"
 #include "NFA.h"
+#include "DFA.h"
 #include "Translator.h"
 #include "TranslatorHelper.h"
+#include "IntSetToInt.h"
 
 TranslatorHelper Translator(NFA nfa, TranslatorHelper tsh){
 	IntSetNode current = get_intSetNode(tsh);
@@ -35,27 +37,30 @@ TranslatorHelper Translator(NFA nfa, TranslatorHelper tsh){
 			}
 
 		}
-//		while (currentStateSet != NULL){
-//			int currentState = IntSet_get_data(currentStateSet);
-//
-//			//			for (unsigned char c = 0; c < 128; c++){
-//			//				IntSet resultStates = NFA_get_transition(nfa, currentState, c);
-//			//				if (resultStates != NULL){
-//			//					if (if_contains(get_intSetNode(tsh), resultStates)){
-//			//					}else{
-//			//						IntSetNode added = new_intSetNode(resultStates);
-//			//						IntSetNode temp = add_intSetNode(get_intSetNode(tsh), added);
-//			//						set_intSetNode(tsh, temp);
-//			//					}
-//			//					IntSetTransition ist = new_intSetTransition(c, resultStates);
-//			//					Dictionary nd = new_dictionary(currentStateSet, ist);
-//			//					Dictionary d = add_dictionary(get_dictionary(tsh), nd);
-//			//					set_dictionary(tsh, d);
-//			//				}
-//			//			}
-//			currentStateSet = IntSet_get_next(currentStateSet);
-//		}
 		current = IntSetNode_get_next(current);
 	}
 	return tsh;
+}
+
+DFA build_dfa(TranslatorHelper tsh){
+	int totalNumOfStates = IntSetNode_count(get_intSetNode(tsh));
+	//build the IntSet to int LinkedList
+	IntSetToInt isti = NULL;
+	IntSetNode search = get_intSetNode(tsh);
+	for (int i =0; i < totalNumOfStates; i ++){
+		IntSetToInt temp = new_intSetToInt(IntSetNode_get_data(search), i);
+		isti = set_nextIntSetToInt(isti, temp);
+		search = IntSetNode_get_next(search);
+	}
+	DFA dfa = new_dfa(totalNumOfStates);
+	Dictionary d = get_dictionary(tsh);
+	while (d != NULL){
+		int currentState = search_stateIndex(isti,  Dictionary_get_currentState(d));
+		IntSetTransition ist = Dictionary_get_ist(d);
+		char c = IntSetTransition_get_c(ist);
+		int resultState = search_stateIndex(isti, IntSetTransition_get_dst(ist));
+		DFA_set_transition(dfa, currentState, c, resultState);
+		d = Dictionary_get_next(d);
+	}
+	return dfa;
 }
