@@ -102,12 +102,10 @@ bool DFA_execute(DFA dfa, char input[]){
 	for(int i = 0; i < strlen(input); i ++){
 		char in = input[i];
 		int nextState = DFA_get_transition(dfa, currentState, in);
-		//printf("nextState: %d\n", nextState);
 		if (nextState == -1){
 			return false;
 		}
 		currentState = nextState;
-
 	}
 	bool result = DFA_get_accepting(dfa, currentState);
 	return result;
