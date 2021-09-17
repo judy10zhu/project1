@@ -20,6 +20,8 @@ extern void NFA_set_transition_all_remove (NFA nfa, int src, char remove, int ds
 
 extern IntSet NFA_get_transition(NFA nfa, int src, char sym);//Intset is a node whose data type is int and has next IntSet
 extern bool NFA_get_accepting(NFA nfa, int state);
+extern IntSet NFA_get_all_acceptingStates(NFA nfa);
+//returns an IntSet that contains all the accepting states
 
 extern void NFA_print(NFA nfa);
 extern void NFA_free(NFA nfa);

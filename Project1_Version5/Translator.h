@@ -7,5 +7,5 @@ extern TranslatorHelper Translator(NFA nfa, TranslatorHelper tsh);
 //Dictionary d stores the IntSet of current State
 //and an IntSetTransition(char, IntSet) that stores the result States of char c
 
-extern DFA build_dfa(TranslatorHelper tsh);
+extern DFA build_dfa(TranslatorHelper tsh, IntSet acceptingStates);
 //build the NFA using the TranslatorHelper

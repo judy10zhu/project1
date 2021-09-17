@@ -42,7 +42,7 @@ TranslatorHelper Translator(NFA nfa, TranslatorHelper tsh){
 	return tsh;
 }
 
-DFA build_dfa(TranslatorHelper tsh){
+DFA build_dfa(TranslatorHelper tsh, IntSet acceptingStates){
 	int totalNumOfStates = IntSetNode_count(get_intSetNode(tsh));
 	//build the IntSet to int LinkedList
 	IntSetToInt isti = NULL;
@@ -61,6 +61,21 @@ DFA build_dfa(TranslatorHelper tsh){
 		int resultState = search_stateIndex(isti, IntSetTransition_get_dst(ist));
 		DFA_set_transition(dfa, currentState, c, resultState);
 		d = Dictionary_get_next(d);
+	}
+
+	//set the accepting States
+	IntSet is = acceptingStates;
+	while (is != NULL){
+		IntSet guard = IntSet_get_next(is);
+		IntSetToInt istisearching = isti;
+		while (istisearching != NULL){
+			IntSet data = get_stateIntSet(istisearching);
+			if (IntSet_if_contains(data, is)){
+				DFA_set_acceptingState(dfa, get_stateIndex(istisearching));
+			}
+			istisearching = get_nextIntSetToInt(istisearching);
+		}
+		is = guard;
 	}
 	return dfa;
 }

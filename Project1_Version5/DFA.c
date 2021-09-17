@@ -112,3 +112,4 @@ bool DFA_execute(DFA dfa, char input[]){
 	bool result = DFA_get_accepting(dfa, currentState);
 	return result;
 }
+

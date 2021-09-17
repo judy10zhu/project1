@@ -40,6 +40,10 @@ int get_stateIndex(IntSetToInt isti){
 	return isti -> stateIndex;
 }
 
+IntSetToInt get_nextIntSetToInt(IntSetToInt isti){
+	return isti -> next;
+}
+
 void print_intSetToInt(IntSetToInt isti){
 	IntSetToInt search = isti;
 	while (search != NULL){

@@ -127,3 +127,16 @@ bool NFA_execute(NFA nfa, int currentState, char input[]){
 
 }
 
+IntSet NFA_get_all_acceptingStates(NFA nfa){
+	State search = nfa -> initialState;
+	IntSet result = NULL;
+	while (search != NULL){
+		if (NFA_get_accepting(nfa, get_stateNum(search))){
+			IntSet added = new_intSet(get_stateNum(search));
+			result = IntSet_sorted_addAll(result, added);
+		}
+		search = get_nextState(search);
+	}
+	return result;
+}
+

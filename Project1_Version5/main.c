@@ -35,11 +35,13 @@ int main(){
 	NFA_set_transition(nfa, 0, 'e', 1);
 	NFA_set_transition(nfa, 1, 'd', 2);
 	NFA_set_acceptingState(nfa, 2);
+	IntSet acceptingStates = NFA_get_all_acceptingStates(nfa);
 
 	TranslatorHelper tsh = new_translatorHelper();
 	tsh = Translator(nfa, tsh);
-	DFA d = build_dfa(tsh);
+	DFA d = build_dfa(tsh, acceptingStates);
 	DFA_print(d);
+
 //	print_translatorHelper(tsh);//print the translator table
 
 }
