@@ -197,7 +197,6 @@ int main() {
 	NFA_set_transition(n3, 0, 'a', 1);
 	// everything but a transition all
 	NFA_set_transition_all_remove (n3, 1, 'a', 1);
-
 	NFA_set_transition(n3, 1, 'a', 2);
 
 	NFA_set_transition(n3, 0, 'g', 3);
@@ -303,8 +302,8 @@ int main() {
 	TranslatorHelper tsh1 = new_translatorHelper();
 	tsh1 = Translator(n1, tsh1);
 	DFA d1 = build_dfa(tsh1, acceptingStates1);
-	printf("DFA has %d States.\n", DFA_get_size(d1));
 	printf("Translating NFA which recognizes Strings ending in 'ter' to DFA ... \n");
+	printf("The translated DFA has %d States.\n", DFA_get_size(d1));
 	char userInput_d1[256];
 	while(1){
 		printf("Enter an input ('quit' to quit):  ");
@@ -323,8 +322,8 @@ int main() {
 	TranslatorHelper tsh2 = new_translatorHelper();
 	tsh2 = Translator(n2, tsh2);
 	DFA d2 = build_dfa(tsh2, acceptingStates2);
-	printf("DFA has %d States.\n", DFA_get_size(d2));
 	printf("Translating NFA which recognizes Strings containing 'ter' to DFA ... \n");
+	printf("The translated DFA has %d States.\n", DFA_get_size(d2));
 	char userInput_nTod2[256];
 	while(1){
 		printf("Enter an input ('quit' to quit):  ");
@@ -337,4 +336,27 @@ int main() {
 			printf("Result for input '%s' : %s \n", userInput_nTod2, DFA_execute(d2, userInput_nTod2) ? "true \n" : "false \n");
 		}
 	}
+
+
+	//nfa 3
+//	IntSet acceptingStates3 = NFA_get_all_acceptingStates(n3);
+//	TranslatorHelper tsh3 = new_translatorHelper();
+//	tsh3 = Translator(n3, tsh3);
+//	DFA d3 = build_dfa(tsh3, acceptingStates3);
+//	printf("Translating NFA which recognizes Strings with more than one a, g, i, o, t, or u, or more than two cs or ns... \n");
+//	printf("The translated DFA has %d States.\n", DFA_get_size(d3));
+//	char userInput_nTod3[256];
+//	while(1){
+//		printf("Enter an input ('quit' to quit):  ");
+//		fflush( stdout );//only for eclipse
+//		scanf("%s", userInput_nTod3);
+//		if(strcmp(userInput_nTod3, "quit")== 0){
+//			printf("\n");
+//			break;
+//		}else{
+//			printf("Result for input '%s' : %s \n", userInput_nTod3, DFA_execute(d3, userInput_nTod3) ? "true \n" : "false \n");
+//		}
+//	}
+
+
 }
