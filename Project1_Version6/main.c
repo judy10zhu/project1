@@ -152,6 +152,20 @@ int main() {
 	NFA_set_transition(n1, 1, 'e', 2);
 	NFA_set_transition(n1, 2, 'r', 3);
 	NFA_set_acceptingState(n1, 3);
+	printf("Testing NFA for strings ending in 'ter' ... \n");
+	char userInput_n1[256];
+
+	while(1){
+		printf("Enter an input ('quit' to quit):  ");
+		fflush( stdout );//only for eclipse
+		scanf("%s", userInput_n1);
+		if(strcmp(userInput_n1, "quit")== 0){
+			printf("\n");
+			break;
+		}else{
+			printf("Result for input '%s' : %s \n", userInput_n1, NFA_execute(n1, 0, userInput_n1) ? "true \n" : "false \n");
+		}
+	}
 
 	//NFA Strings contain "ter"
 	NFA n2 = new_nfa(4);
@@ -161,6 +175,20 @@ int main() {
 	NFA_set_transition(n2, 1, 'e', 2);
 	NFA_set_transition(n2, 2, 'r', 3);
 	NFA_set_acceptingState(n2, 3);
+	printf("Testing NFA for strings containing 'ter' ... \n");
+	char userInput_n2[256];
+
+	while(1){
+		printf("Enter an input ('quit' to quit):  ");
+		fflush( stdout );//only for eclipse
+		scanf("%s", userInput_n2);
+		if(strcmp(userInput_n2, "quit")== 0){
+			printf("\n");
+			break;
+		}else{
+			printf("Result for input '%s' : %s \n", userInput_n2, NFA_execute(n2, 0, userInput_n2) ? "true \n" : "false \n");
+		}
+	}
 
 	//NFA3
 	//Strings with more than one a, g, i, o, t, or u, or more than two cs or ns
@@ -245,6 +273,29 @@ int main() {
 			printf("Result for input '%s' : %s \n", userInput_n3, NFA_execute(n3, 0, userInput_n3) ? "true \n" : "false \n");
 		}
 	}
+
+	//NFA 4 interesting automaton
+	NFA n_thx = new_nfa(4);
+	NFA_set_transition_all(n_thx, 0, 0);
+	NFA_set_transition(n_thx, 0, 't', 1);
+	NFA_set_transition(n_thx, 1, 'h', 2);
+	NFA_set_transition(n_thx, 2, 'x', 3);
+	NFA_set_acceptingState(n_thx, 3);
+	printf("Testing NFA for strings ending in 'thx'\n");
+	char userInput_thx[256];
+
+	while(1){
+		printf("Enter an input ('quit' to quit):  ");
+		fflush( stdout );//only for eclipse
+		scanf("%s", userInput_thx);
+		if(strcmp(userInput_thx, "quit")== 0){
+			printf("\n");
+			break;
+		}else{
+			printf("Result for input '%s' : %s \n", userInput_thx, NFA_execute(n_thx, 0, userInput_thx) ? "true \n" : "false \n");
+		}
+	}
+
 
 	//Translator
 	//nfa 1
